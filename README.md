@@ -3,3 +3,5 @@
 Wish me well. WIP. Not usable, at all, completely, for now. 
 
 Forked from muhviehstah ! GPLed by Realtek itself initially ! If working, will be used to create a DKMS + PKGBUILD secondary repo & include in AUR. Stay tuned. 
+
+This Repo is not intended to be used as-is. It will be a source repo for use with a <same name>-dkms-git with dkms (obvioulsy) and a PKGBUILD for use with makepkg under alarm 
