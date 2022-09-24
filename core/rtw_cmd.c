@@ -543,6 +543,7 @@ void rtw_stop_cmd_thread(_adapter *adapter)
 
 thread_return rtw_cmd_thread(thread_context context)
 {
+	long retvalue;	
 	u8 ret;
 	struct cmd_obj *pcmd;
 	u8 *pcmdbuf, *prspbuf;
@@ -755,7 +756,6 @@ post_process:
 	_rtw_up_sema(&pcmdpriv->terminate_cmdthread_sema);
 
 _func_exit_;
-	long retvalue;
 	retvalue = 0;
 	thread_exit(retvalue);
 	return retvalue;
