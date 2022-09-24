@@ -3,7 +3,7 @@
  * Copyright(c) 2007 - 2011 Realtek Corporation. All rights reserved.
  *                                        
  * This program is free software; you can redistribute it and/or modify it
- * under the terms of version 2 of the GNU General Public License as
+ * under the terms of version 2 of the GNU General Public License 
  * published by the Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful, but WITHOUT
@@ -345,7 +345,7 @@ void rtw_mfree_stainfo(struct sta_info *psta)
 {
 _func_enter_;
 
-	if(&psta->lock != NULL)
+	if(&psta->*lock != NULL)
 		 _rtw_spinlock_free(&psta->lock);
 
 	_rtw_free_sta_xmit_priv_lock(&psta->sta_xmitpriv);
