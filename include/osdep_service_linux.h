@@ -153,7 +153,7 @@
 	typedef int		thread_return;
 	typedef void*	thread_context;
 
-	#define thread_exit(ret) kthread_complete_and_exit(NULL, long ret)
+	#define thread_exit(retvalue) kthread_complete_and_exit(NULL, long retvalue)
 
 	typedef void timer_hdl_return;
 	typedef void* timer_hdl_context;
