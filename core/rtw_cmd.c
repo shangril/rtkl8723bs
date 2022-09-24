@@ -757,7 +757,7 @@ post_process:
 
 _func_exit_;
 	retvalue = 0;
-	kthread_complete_and_exit(NULL, retvalue);
+	kthread_exit(retvalue);
 	return retvalue;
 
 }
