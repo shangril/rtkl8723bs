@@ -133,11 +133,7 @@
 #else
 	typedef struct semaphore	_mutex;
 #endif
-	typedef struct timer_list {
-		*_timer timer;
-		unsigned long data;
-		
-	};
+	typedef struct timer_list _timer ;
 	struct	__queue	{
 		struct	list_head	queue;	
 		_lock	lock;
@@ -273,7 +269,7 @@ __inline static void _init_timer(timer_list *ptimer,_nic_hdl nic_hdl,void *pfunc
 {
 	//setup_timer(ptimer, pfunc,(u32)cntx);	
 	ptimer->function = pfunc;
-	ptimer->data = (unsigned long)cntx;
+	ptimer->entry->data = (unsigned long)cntx;
 	_init_timer(ptimer);
 }
 
