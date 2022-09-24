@@ -269,7 +269,7 @@ __inline static void _init_timer(_timer *ptimer,_nic_hdl nic_hdl,void *pfunc,voi
 {
 	//setup_timer(ptimer, pfunc,(u32)cntx);	
 	ptimer->function = pfunc;
-	ptimer.flags = (unsigned long)cntx;
+	ptimer->flags = (unsigned long)cntx;
 	_init_timer(ptimer, nic_hdl, pfunc, cntx);
 }
 
