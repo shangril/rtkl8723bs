@@ -153,7 +153,7 @@
 	typedef int		thread_return;
 	typedef void*	thread_context;
 
-	#define thread_exit() thread_complete_and_exit(NULL, 0)
+	#define thread_exit() kthread_complete_and_exit(NULL, 0)
 
 	typedef void timer_hdl_return;
 	typedef void* timer_hdl_context;
@@ -269,7 +269,7 @@ __inline static void _init_timer(_timer *ptimer,_nic_hdl nic_hdl,void *pfunc,voi
 {
 	//setup_timer(ptimer, pfunc,(u32)cntx);	
 	ptimer->function = pfunc;
-	ptimer->entry->data = (unsigned long)cntx;
+	ptimer->entry.data = (unsigned long)cntx;
 	_init_timer(ptimer);
 }
 
