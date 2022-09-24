@@ -4888,7 +4888,7 @@ thread_return rtw_xmit_thread(thread_context context)
 
 	_rtw_up_sema(&padapter->xmitpriv.terminate_xmitthread_sema);
 	retvalue = 0;
-	kthread_complete_and_exit(NULL, retvalue);
+	kthread_exit(NULL, retvalue);
 	return retvalue;
 }
 #endif
