@@ -756,8 +756,8 @@ post_process:
 
 _func_exit_;
 
-	thread_exit();
-	return;
+	return thread_exit();
+	
 
 }
 
