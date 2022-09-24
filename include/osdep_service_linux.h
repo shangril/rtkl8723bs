@@ -265,7 +265,7 @@ __inline static void rtw_list_delete(_list *plist)
 
 #define RTW_TIMER_HDL_ARGS void *FunctionContext
 
-__inline static void _init_timer(timer *ptimer,_nic_hdl nic_hdl,void *pfunc,void* cntx)
+__inline static void _init_timer(_timer *ptimer,_nic_hdl nic_hdl,void *pfunc,void* cntx)
 {
 	//setup_timer(ptimer, pfunc,(u32)cntx);	
 	ptimer->function = pfunc;
