@@ -133,8 +133,11 @@
 #else
 	typedef struct semaphore	_mutex;
 #endif
-	typedef struct timer_list _timer;
-
+	typedef struct timer_list {
+		*_timer timer;
+		unsigned long data;
+		
+	};
 	struct	__queue	{
 		struct	list_head	queue;	
 		_lock	lock;
@@ -154,7 +157,7 @@
 	typedef int		thread_return;
 	typedef void*	thread_context;
 
-	#define thread_exit() _complete_and_exit(NULL, 0)
+	#define thread_exit() thread_complete_and_exit(NULL, 0)
 
 	typedef void timer_hdl_return;
 	typedef void* timer_hdl_context;
@@ -266,11 +269,11 @@ __inline static void rtw_list_delete(_list *plist)
 
 #define RTW_TIMER_HDL_ARGS void *FunctionContext
 
-__inline static void _init_timer(_timer *ptimer,_nic_hdl nic_hdl,void *pfunc,void* cntx)
+__inline static void _init_timer(timer_list *ptimer,_nic_hdl nic_hdl,void *pfunc,void* cntx)
 {
 	//setup_timer(ptimer, pfunc,(u32)cntx);	
 	ptimer->function = pfunc;
-	ptimer = * (unsigned long)cntx;
+	ptimer->data = (unsigned long)cntx;
 	_init_timer(ptimer);
 }
 
