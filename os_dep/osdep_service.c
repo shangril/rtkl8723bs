@@ -799,7 +799,7 @@ void* rtw_malloc2d(int h, int w, size_t size)
 	return a;
 }
 
-void rtw_mfree2d(void *pbuf, int h, int w, uint32_t size)
+void rtw_mfree2d(const void *pbuf, int h, int w, uint32_t size)
 {
 	rtw_mfree((u8 *)pbuf, h*sizeof(void*) + w*h*size);
 }
