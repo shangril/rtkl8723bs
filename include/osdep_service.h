@@ -201,12 +201,12 @@ void dbg_rtw_usb_buffer_free(struct usb_device *dev, size_t size, void *addr, dm
 #define rtw_mstat_dump(sel) do {} while(0)
 u8*	_rtw_vmalloc(u32 sz);
 u8*	_rtw_zvmalloc(u32 sz);
-void	_rtw_vmfree(u8 *pbuf, u32 sz);
+void	_rtw_vmfree(u8 *pbuf, uint32_t sz);
 u8*	_rtw_zmalloc(u32 sz);
 u8*	_rtw_malloc(u32 sz);
-void	_rtw_mfree(u8 *pbuf, u32 sz);
+void	_rtw_mfree(u8 *pbuf, uint32_t sz);
 
-struct sk_buff *_rtw_skb_alloc(u32 sz);
+struct sk_buff *_rtw_skb_alloc(uint32_t sz);
 void _rtw_skb_free(struct sk_buff *skb);
 struct sk_buff *_rtw_skb_copy(const struct sk_buff *skb);
 struct sk_buff *_rtw_skb_clone(struct sk_buff *skb);
