@@ -22,7 +22,7 @@
 #ifdef __KERNEL__
 #include <linux/if_arp.h>
 #include <net/ip.h>
-#include <net/ipx.h>
+//#include <net/ipx.h> This cannot work with kernel > 5.15 because IPX is obsoleted since 2018 and no longer supported in Linux Kernel
 #include <linux/atalk.h>
 #include <linux/udp.h>
 #include <linux/if_pppox.h>
