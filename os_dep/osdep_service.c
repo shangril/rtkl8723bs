@@ -1957,7 +1957,7 @@ static int isFileReadable(char *path)
 		ret = PTR_ERR(fp);
 	}
 	else {
-		oldfs = get_sa(); sget_fc(get_da());
+		oldfs = get_sa(*path); sget_fc(get_da(*path));
 		
 		if(1!=readFile(fp, &buf, 1))
 			ret = PTR_ERR(fp);
