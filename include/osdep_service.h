@@ -261,7 +261,7 @@ void _rtw_usb_buffer_free(struct usb_device *dev, size_t size, void *addr, dma_a
 extern void*	rtw_malloc2d(int h, int w, size_t size);
 extern void	rtw_mfree2d(void *pbuf, int h, int w, uint32_t size);
 
-extern void	_rtw_memcpy(unsigned char *dec, const void *sour, uint32_t sz);
+extern void	_rtw_memcpy(void *dec, const void *sour, uint32_t sz);
 extern void _rtw_memmove(void *dst, const void *src, uint32_t sz);
 extern int	_rtw_memcmp(void *dst, const void *src, uint32_t sz);
 extern void	_rtw_memset(void *pbuf, int c, uint32_t sz);
