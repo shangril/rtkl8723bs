@@ -4874,6 +4874,7 @@ thread_return rtw_xmit_thread(thread_context context)
 {
 	s32 err;
 	PADAPTER padapter;
+	unsigned long retvalue;
 
 
 	err = _SUCCESS;
