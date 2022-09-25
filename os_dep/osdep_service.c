@@ -804,7 +804,7 @@ void rtw_mfree2d(void *pbuf, int h, int w, int size)
 	rtw_mfree((u8 *)pbuf, h*sizeof(void*) + w*h*size);
 }
 
-void _rtw_memcpy(void *dst, const void *src, u32 sz)
+void _rtw_memcpy(const void *dst, const void *src, u32 sz)
 {
 
 #if defined (PLATFORM_LINUX)|| defined (PLATFORM_FREEBSD)
@@ -1949,7 +1949,7 @@ static int isFileReadable(char *path)
 { 
 	struct file *fp;
 	int ret = 0;
-	mm_segment_t oldfs;
+	unsigned char oldfs;
 	char buf;
  
 	fp=filp_open(path, O_RDONLY, 0); 
@@ -1957,12 +1957,12 @@ static int isFileReadable(char *path)
 		ret = PTR_ERR(fp);
 	}
 	else {
-		oldfs = get_fs(); set_fs(get_ds());
+		oldfs = get_sa(); sget_fc(get_da());
 		
 		if(1!=readFile(fp, &buf, 1))
 			ret = PTR_ERR(fp);
 		
-		set_fs(oldfs);
+		sget_fc(oldfs);
 		filp_close(fp,NULL);
 	}	
 	return ret;
@@ -1978,7 +1978,7 @@ static int isFileReadable(char *path)
 static int retriveFromFile(char *path, u8* buf, u32 sz)
 {
 	int ret =-1;
-	mm_segment_t oldfs;
+	unsigned char oldfs;
 	struct file *fp;
 
 	if(path && buf) {
@@ -2012,7 +2012,7 @@ static int retriveFromFile(char *path, u8* buf, u32 sz)
 static int storeToFile(char *path, u8* buf, u32 sz)
 {
 	int ret =0;
-	mm_segment_t oldfs;
+	unsigned char oldfs;
 	struct file *fp;
 	
 	if(path && buf) {
