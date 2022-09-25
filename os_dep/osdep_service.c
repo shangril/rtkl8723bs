@@ -809,7 +809,7 @@ void _rtw_memcpy(const void *dst, const void *src, u32 sz)
 
 #if defined (PLATFORM_LINUX)|| defined (PLATFORM_FREEBSD)
 
-	memcpy(const dst, src, sz);
+	memcpy(dst, src, sz);
 
 #endif	
 
