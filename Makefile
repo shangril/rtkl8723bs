@@ -16,6 +16,7 @@ EXTRA_CFLAGS += -Wno-unused
 #EXTRA_CFLAGS += -Wno-uninitialized
 EXTRA_CFLAGS += -Wno-error=date-time	# Fix compile error on gcc 4.9 and later
 EXTRA_CFLAGS += -Wimplicit-fallthrough=0 #necessary for GCC 12.1
+EXTRA_CFLAGS += -Wframe-larger-than=0 #necessary for GCC 12.1
 
 EXTRA_CFLAGS += -I$(src)/include
 EXTRA_CFLAGS += -I$(src)/hal/phydm
