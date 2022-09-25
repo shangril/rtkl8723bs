@@ -259,15 +259,15 @@ void _rtw_usb_buffer_free(struct usb_device *dev, size_t size, void *addr, dma_a
 #endif /* DBG_MEM_ALLOC */
 
 extern void*	rtw_malloc2d(int h, int w, size_t size);
-extern void	rtw_mfree2d(const void *pbuf, int h, int w, uint32t size);
+extern void	rtw_mfree2d(const void *pbuf, int h, int w, uint32_t size);
 
-extern void	_rtw_memcpy(void *dec, const void *sour, uint32t sz);
-extern void _rtw_memmove(void *dst, const void *src, uint32t sz);
-extern int	_rtw_memcmp(void *dst, const void *src, uint32t sz);
-extern void	_rtw_memset(void *pbuf, int c, uint32t sz);
+extern void	_rtw_memcpy(void *dec, const void *sour, uint32_t sz);
+extern void _rtw_memmove(void *dst, const void *src, uint32_t sz);
+extern int	_rtw_memcmp(void *dst, const void *src, uint32_t sz);
+extern void	_rtw_memset(void *pbuf, int c, uint32_t sz);
 
 extern void	_rtw_init_listhead(_list *list);
-extern u32	rtw_is_list_empty(_list *phead);
+extern uint32_t	rtw_is_list_empty(_list *phead);
 extern void	rtw_list_insert_head(_list *plist, _list *phead);
 extern void	rtw_list_insert_tail(_list *plist, _list *phead);
 #ifndef PLATFORM_FREEBSD
@@ -291,14 +291,14 @@ extern void	_rtw_spinunlock_ex(_lock	*plock);
 
 extern void	_rtw_init_queue(_queue *pqueue);
 extern void _rtw_deinit_queue(_queue *pqueue);
-extern u32	_rtw_queue_empty(_queue	*pqueue);
-extern u32	rtw_end_of_queue_search(_list *queue, _list *pelement);
+extern uint32_t	_rtw_queue_empty(_queue	*pqueue);
+extern uint32_t	rtw_end_of_queue_search(_list *queue, _list *pelement);
 
-extern u32	rtw_get_current_time(void);
-extern u32	rtw_systime_to_ms(u32 systime);
-extern u32	rtw_ms_to_systime(u32 ms);
-extern s32	rtw_get_passing_time_ms(u32 start);
-extern s32	rtw_get_time_interval_ms(u32 start, u32 end);
+extern uint32_t	rtw_get_current_time(void);
+extern uint32_t	rtw_systime_to_ms(uint32_t systime);
+extern uint32_t	rtw_ms_to_systime(uint32_t ms);
+extern s32	rtw_get_passing_time_ms(uint32_t start);
+extern s32	rtw_get_time_interval_ms(uint32_t start, uint32_t end);
 
 extern void	rtw_sleep_schedulable(int ms);
 
@@ -417,10 +417,10 @@ __inline static int rtw_bug_check(void *parg1, void *parg2, void *parg3, void *p
 #define _RND(sz, r) ((((sz)+((r)-1))/(r))*(r))
 #define RND4(x)	(((x >> 2) + (((x & 3) == 0) ?  0: 1)) << 2)
 
-__inline static u32 _RND4(u32 sz)
+__inline static uint32_t _RND4(uint32_t sz)
 {
 
-	u32	val;
+	uint32_t	val;
 
 	val = ((sz >> 2) + ((sz & 3) ? 1: 0)) << 2;
 	
@@ -428,10 +428,10 @@ __inline static u32 _RND4(u32 sz)
 
 }
 
-__inline static u32 _RND8(u32 sz)
+__inline static uint32_t _RND8(uint32_t sz)
 {
 
-	u32	val;
+	uint32_t	val;
 
 	val = ((sz >> 3) + ((sz & 7) ? 1: 0)) << 3;
 	
@@ -439,10 +439,10 @@ __inline static u32 _RND8(u32 sz)
 
 }
 
-__inline static u32 _RND128(u32 sz)
+__inline static uint32_t _RND128(uint32_t sz)
 {
 
-	u32	val;
+	uint32_t	val;
 
 	val = ((sz >> 7) + ((sz & 127) ? 1: 0)) << 7;
 	
@@ -450,10 +450,10 @@ __inline static u32 _RND128(u32 sz)
 
 }
 
-__inline static u32 _RND256(u32 sz)
+__inline static uint32_t _RND256(uint32_t sz)
 {
 
-	u32	val;
+	uint32_t	val;
 
 	val = ((sz >> 8) + ((sz & 255) ? 1: 0)) << 8;
 	
@@ -461,10 +461,10 @@ __inline static u32 _RND256(u32 sz)
 
 }
 
-__inline static u32 _RND512(u32 sz)
+__inline static uint32_t _RND512(uint32_t sz)
 {
 
-	u32	val;
+	uint32_t	val;
 
 	val = ((sz >> 9) + ((sz & 511) ? 1: 0)) << 9;
 	
@@ -472,9 +472,9 @@ __inline static u32 _RND512(u32 sz)
 
 }
 
-__inline static u32 bitshift(u32 bitmask)
+__inline static uint32_t bitshift(uint32_t bitmask)
 {
-	u32 i;
+	uint32_t i;
 
 	for (i = 0; i <= 31; i++)
 		if (((bitmask>>i) &  0x1) == 1) break;
@@ -498,11 +498,11 @@ extern void rtw_suspend_lock_init(void);
 extern void rtw_suspend_lock_uninit(void);
 extern void rtw_lock_suspend(void);
 extern void rtw_unlock_suspend(void);
-extern void rtw_lock_suspend_timeout(u32 timeout_ms);
-extern void rtw_lock_ext_suspend_timeout(u32 timeout_ms);
-extern void rtw_lock_rx_suspend_timeout(u32 timeout_ms);
-extern void rtw_lock_traffic_suspend_timeout(u32 timeout_ms);
-extern void rtw_lock_resume_scan_timeout(u32 timeout_ms);
+extern void rtw_lock_suspend_timeout(uint32_t timeout_ms);
+extern void rtw_lock_ext_suspend_timeout(uint32_t timeout_ms);
+extern void rtw_lock_rx_suspend_timeout(uint32_t timeout_ms);
+extern void rtw_lock_traffic_suspend_timeout(uint32_t timeout_ms);
+extern void rtw_lock_resume_scan_timeout(uint32_t timeout_ms);
 extern void rtw_resume_lock_suspend(void);
 extern void rtw_resume_unlock_suspend(void);
 #ifdef CONFIG_AP_WOWLAN
@@ -523,8 +523,8 @@ extern int ATOMIC_DEC_RETURN(ATOMIC_T *v);
 
 //File operation APIs, just for linux now
 extern int rtw_is_file_readable(char *path);
-extern int rtw_retrieve_from_file(char *path, u8 *buf, u32 sz);
-extern int rtw_store_to_file(char *path, u8* buf, u32 sz);
+extern int rtw_retrieve_from_file(char *path, u8 *buf, uint32_t sz);
+extern int rtw_store_to_file(char *path, u8* buf, uint32_t sz);
 
 
 #ifndef PLATFORM_FREEBSD
@@ -534,7 +534,7 @@ extern void rtw_free_netdev(struct net_device * netdev);
 
 extern u64 rtw_modular64(u64 x, u64 y);
 extern u64 rtw_division64(u64 x, u64 y);
-extern u32 rtw_random32(void);
+extern uint32_t rtw_random32(void);
 
 /* Macros for handling unaligned memory accesses */
 
@@ -602,13 +602,13 @@ extern u32 rtw_random32(void);
 			 (((u64) (a)[3]) << 24) | (((u64) (a)[2]) << 16) | \
 			 (((u64) (a)[1]) << 8) | ((u64) (a)[0]))
 
-void rtw_buf_free(u8 **buf, u32 *buf_len);
-void rtw_buf_update(u8 **buf, u32 *buf_len, u8 *src, u32 src_len);
+void rtw_buf_free(u8 **buf, uint32_t *buf_len);
+void rtw_buf_update(u8 **buf, uint32_t *buf_len, u8 *src, uint32_t src_len);
 
 struct rtw_cbuf {
-	u32 write;
-	u32 read;
-	u32 size;
+	uint32_t write;
+	uint32_t read;
+	uint32_t size;
 	void *bufs[0];
 };
 
@@ -616,7 +616,7 @@ bool rtw_cbuf_full(struct rtw_cbuf *cbuf);
 bool rtw_cbuf_empty(struct rtw_cbuf *cbuf);
 bool rtw_cbuf_push(struct rtw_cbuf *cbuf, void *buf);
 void *rtw_cbuf_pop(struct rtw_cbuf *cbuf);
-struct rtw_cbuf *rtw_cbuf_alloc(u32 size);
+struct rtw_cbuf *rtw_cbuf_alloc(uint32_t size);
 void rtw_cbuf_free(struct rtw_cbuf *cbuf);
 
 // String handler
