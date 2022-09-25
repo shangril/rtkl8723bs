@@ -1010,7 +1010,7 @@ int nat25_db_handle(_adapter *priv, struct sk_buff *skb, int method)
 			}
 		}
 
-		/*   IPX   */
+		/*   IPX   SUPPORT IS NOW DROPPED FROM KERNEL>5.15 since ipx is obsoleted since 2018
 		if(ipx != NULL)
 		{
 			switch(method)
@@ -1089,7 +1089,7 @@ int nat25_db_handle(_adapter *priv, struct sk_buff *skb, int method)
 					return -1;
 			}
 		}
-
+		--END OF THE NOW OBSOLETE IPX SECTION */
 		/*   AARP   */
 		else if(ea != NULL)
 		{
