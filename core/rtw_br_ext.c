@@ -1089,9 +1089,9 @@ int nat25_db_handle(_adapter *priv, struct sk_buff *skb, int method)
 					return -1;
 			}
 		}
-		--END OF THE NOW OBSOLETE IPX SECTION */
+		--END OF THE NOW OBSOLETE IPX SECTION // else removed juste befor the if below*/
 		/*   AARP   */
-		else if(ea != NULL)
+		if(ea != NULL)
 		{
 			/* Sanity check fields. */
 			if(ea->hw_len != ETH_ALEN || ea->pa_len != AARP_PA_ALEN)
