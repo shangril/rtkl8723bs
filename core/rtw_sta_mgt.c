@@ -345,11 +345,12 @@ void rtw_mfree_stainfo(struct sta_info *psta)
 {
 _func_enter_;
 
-	if(*psta->lock != NULL)
-		 _rtw_spinlock_free(*psta->lock );
+	//if(&psta->lock != NULL) <- this had to be commented out, since it will always return true
+	
+	 _rtw_spinlock_free(&psta->lock );
 
-	_rtw_free_sta_xmit_priv_lock(*psta->sta_xmitpriv);
-	_rtw_free_sta_recv_priv_lock(*psta->sta_recvpriv);
+	_rtw_free_sta_xmit_priv_lock(&psta->sta_xmitpriv);
+	_rtw_free_sta_recv_priv_lock(&psta->sta_recvpriv);
 	
 _func_exit_;	
 }
