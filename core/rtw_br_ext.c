@@ -1215,7 +1215,7 @@ int nat25_db_handle(_adapter *priv, struct sk_buff *skb, int method)
 					{
 						if (priv->ethBrExtInfo.addPPPoETag) {
 							struct pppoe_tag *tag, *pOldTag;
-							unsigned char tag_buf[9220]//[40];
+							unsigned char tag_buf[9220];//[40];
 							int old_tag_len=0;
 
 							tag = (struct pppoe_tag *)tag_buf;
