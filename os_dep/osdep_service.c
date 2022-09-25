@@ -799,7 +799,7 @@ void* rtw_malloc2d(int h, int w, size_t size)
 	return a;
 }
 
-void rtw_mfree2d(void *pbuf, int h, int w, int size)
+void rtw_mfree2d(void *pbuf, int h, int w, u32 size)
 {
 	rtw_mfree((u8 *)pbuf, h*sizeof(void*) + w*h*size);
 }
@@ -809,7 +809,7 @@ void _rtw_memcpy(const void *dst, const void *src, u32 sz)
 
 #if defined (PLATFORM_LINUX)|| defined (PLATFORM_FREEBSD)
 
-	memcpy(dst, src, sz);
+	memcpy(const dst, src, sz);
 
 #endif	
 
