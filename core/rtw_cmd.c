@@ -673,7 +673,7 @@ _next:
 			DBG_871X(ADPT_FMT" "CMD_FMT" %sexecute\n", ADPT_ARG(pcmd->padapter), CMD_ARG(pcmd)
 				, pcmd->res == H2C_ENQ_HEAD ? "ENQ_HEAD " : (pcmd->res == H2C_ENQ_HEAD_FAIL ? "ENQ_HEAD_FAIL " : ""));
 
-		_rtw_memcpy(pcmdbuf, pcmd->parmbuf, pcmd->cmdsz);
+		__memcpy(pcmdbuf, pcmd->parmbuf, pcmd->cmdsz);
 		ret = cmd_hdl(pcmd->padapter, pcmdbuf);
 		pcmd->res = ret;
 
@@ -1489,7 +1489,7 @@ _func_enter_;
 		goto exit;
 	}
 
-	_rtw_memset(psecnetwork, 0, t_len);
+	__memset(psecnetwork, 0, t_len);
 
 	_rtw_memcpy(psecnetwork, &pnetwork->network, get_WLAN_BSSID_EX_sz(&pnetwork->network));
 	
