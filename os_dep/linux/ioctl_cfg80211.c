@@ -2406,8 +2406,9 @@ if (padapter->registrypriv.mp_mode == 1)
 	#ifdef CONFIG_P2P
 	if( pwdinfo->driver_interface == DRIVER_CFG80211 )
 	{
-		if(ssids->ssid != NULL
-			&& _rtw_memcmp(ssids->ssid, "DIRECT-", 7)
+		if(//ssids->ssid != NULL
+			//&& 
+			_rtw_memcmp(ssids->ssid, "DIRECT-", 7)
 			&& rtw_get_p2p_ie((u8 *)request->ie, request->ie_len, NULL, NULL)
 		)
 		{
