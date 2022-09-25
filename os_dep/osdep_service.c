@@ -258,7 +258,7 @@ struct sk_buff * dev_alloc_skb(unsigned int size)
 out:
 	return skb;
 nodata:
-	_rtw_mfree((u8 *)skb, sizeof(struct sk_buff));
+	_rtw_mfree((u8 *)skb, (u32) sizeof(struct sk_buff));
 	skb = NULL;
 goto out;
 	
