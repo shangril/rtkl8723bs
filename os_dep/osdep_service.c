@@ -2199,8 +2199,12 @@ int rtw_change_ifname(_adapter *padapter, const char *ifname)
 	SET_NETDEV_DEV(pnetdev, dvobj_to_dev(adapter_to_dvobj(padapter)));
 
 	rtw_init_netdev_name(pnetdev, ifname);
-
-	_rtw_memcpy(*(pnetdev->&dev_addr), adapter_mac_addr(padapter), ETH_ALEN);
+	
+	const void temp_dev_addr = pnetdev->dev_addr;
+	
+	* void ptr_temp_dev_addr = & temp_dev_addr;
+	
+	_rtw_memcpy(* ptr_temp_dev_addr, adapter_mac_addr(padapter), ETH_ALEN);
 
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,26))
 	if(!rtnl_is_locked())
