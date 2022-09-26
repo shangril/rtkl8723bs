@@ -356,6 +356,9 @@ static u64 rtw_get_systime_us(void)
 	struct timeval tv;
 	do_gettimeofday(&tv);
 	return ((u64)tv.tv_sec*1000000) + tv.tv_usec;
+#else
+	//just for the compiler warning, dead branch
+	return (u64)0;
 #endif
 }
 
@@ -805,7 +808,7 @@ check_bss:
 			#if LINUX_VERSION_CODE > KERNEL_VERSION(2, 6, 39) || defined(COMPAT_KERNEL_RELEASE)
 			, notify_channel
 			#endif
-			, cur_network->*network.MacAddress
+			, cur_network->&network.MacAddress
 			, pmlmepriv->assoc_req+sizeof(struct rtw_ieee80211_hdr_3addr)+2
 			, pmlmepriv->assoc_req_len-sizeof(struct rtw_ieee80211_hdr_3addr)-2
 			, pmlmepriv->assoc_rsp+sizeof(struct rtw_ieee80211_hdr_3addr)+6
@@ -6789,7 +6792,7 @@ void rtw_wdev_unregister(struct wireless_dev *wdev)
 		cfg80211_disconnected(adapter->pnetdev, 0, NULL, 0, locally_generated, GFP_ATOMIC);
 	}
 	#elif ((LINUX_VERSION_CODE >= KERNEL_VERSION(3, 11, 0)) && (LINUX_VERSION_CODE < KERNEL_VERSION(4, 2, 0))) || defined(COMPAT_KERNEL_RELEASE)	
-	if (wdev->current_bss) {
+	if (wdev->current_internal_bss) {
 		DBG_871X(FUNC_ADPT_FMT" clear current_bss by cfg80211_disconnected\n", FUNC_ADPT_ARG(adapter));
 		cfg80211_disconnected(adapter->pnetdev, 0, NULL, 0, GFP_ATOMIC);
 	}
