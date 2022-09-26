@@ -351,7 +351,7 @@ static u64 rtw_get_systime_us(void)
 	struct timespec * ts;
 	//get_monotonic_boottime(&ts);
 	ktime_get_boottime_ts64(ts);
-	return ((u64)ts->tv_sec*1000000) + ts->tv_nsec / 1000;
+	return ((u64)*ts->tv_sec*1000000) + *ts->tv_nsec / 1000;
 #else
 	struct timeval tv;
 	do_gettimeofday(&tv);
