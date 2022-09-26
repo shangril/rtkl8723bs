@@ -351,7 +351,7 @@ static u64 rtw_get_systime_us(void)
 	struct timespec * ts;
 	//get_monotonic_boottime(&ts);
 	ktime_get_boottime_ts64(ts);
-	return ((u64)*ts.tv_sec*1000000) + *ts.tv_nsec / 1000;
+	return ((u64)*ts->tv_sec*1000000) + *ts->tv_nsec / 1000;
 #else
 	struct timeval tv;
 	do_gettimeofday(&tv);
@@ -802,10 +802,10 @@ check_bss:
 
 		DBG_871X(FUNC_ADPT_FMT" call cfg80211_roamed\n", FUNC_ADPT_ARG(padapter));
 		cfg80211_roamed(padapter->pnetdev
-			#if LINUX_VERSION_CODE > KERNEL_VERSION(2, 6, 39) || defined(COMPAT_KERNEL_RELEASE)
+			#if 1 //LINUX_VERSION_CODE > KERNEL_VERSION(2, 6, 39) || defined(COMPAT_KERNEL_RELEASE)
 			, notify_channel
 			#endif
-			, padapter->cur_network.MacAddress
+			, padapter->_WLAN_BSSID_EX.cur_network.MacAddress
 			, pmlmepriv->assoc_req+sizeof(struct rtw_ieee80211_hdr_3addr)+2
 			, pmlmepriv->assoc_req_len-sizeof(struct rtw_ieee80211_hdr_3addr)-2
 			, pmlmepriv->assoc_rsp+sizeof(struct rtw_ieee80211_hdr_3addr)+6
