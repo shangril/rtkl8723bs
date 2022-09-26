@@ -6787,7 +6787,7 @@ void rtw_wdev_unregister(struct wireless_dev *wdev)
 	struct mlme_priv * pmlmepriv;
 	_adapter *adapter;
 	struct rtw_wdev_priv *pwdev_priv;
-	struct wlan_network  *xcur_network;
+	struct wlan_network  *cur_network;
 	
 	adapter = (_adapter *)rtw_netdev_priv(ndev);
 	
