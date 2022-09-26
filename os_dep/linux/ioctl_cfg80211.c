@@ -799,7 +799,7 @@ check_bss:
 		struct cfg80211_roam_info roam_info = {};
 
 		wiphy = pwdev->wiphy;		
-		channel = cur_network->network.Configuration.DSconfig;
+		channel = cur_network->network.Configuration.DSConfig;
 		
 		freq = ieee80211_channel_to_frequency(channel, NL80211_BAND_2GHZ);
 
@@ -6787,12 +6787,13 @@ void rtw_wdev_unregister(struct wireless_dev *wdev)
 	struct mlme_priv * pmlmepriv;
 	_adapter *adapter;
 	struct rtw_wdev_priv *pwdev_priv;
+	struct wlan_network  *xcur_network;
 	
 	adapter = (_adapter *)rtw_netdev_priv(ndev);
 	
 	
 	pmlmepriv = &adapter->mlmepriv;
-	struct wlan_network  *cur_network = &(pmlmepriv->cur_network);
+	cur_network = &(pmlmepriv->cur_network);
 	
 	
 	
