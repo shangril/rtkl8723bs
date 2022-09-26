@@ -793,13 +793,15 @@ check_bss:
 		#if LINUX_VERSION_CODE > KERNEL_VERSION(2, 6, 39) || defined(COMPAT_KERNEL_RELEASE)
 		struct wiphy *wiphy;
 		struct ieee80211_channel *notify_channel;
-		u32 freq;
+		uint32_t freq;
+		u16 channel;
 		
 		struct cfg80211_roam_info roam_info = {};
 
 		wiphy = pwdev->wiphy;		
+		channel = cur_network->network.configuration.ds_config;
 		
-		freq = rtw_ieee80211_channel_to_frequency(channel, NL80211_BAND_2GHZ);
+		freq = ieee80211_channel_to_frequency(channel, NL80211_BAND_2GHZ);
 
 		notify_channel = ieee80211_get_channel(wiphy, freq);
 
@@ -817,7 +819,7 @@ check_bss:
 		
 		
 		
-		u16 channel = cur_network->network.Configuration.DSConfig;
+		//u16 channel = cur_network->network.Configuration.DSConfig;
 
 		freq = rtw_ch2freq(channel);
 		notify_channel = ieee80211_get_channel(wiphy, freq);
@@ -825,7 +827,7 @@ check_bss:
 
 		DBG_871X(FUNC_ADPT_FMT" call cfg80211_roamed\n", FUNC_ADPT_ARG(padapter));
 		cfg80211_roamed(padapter->pnetdev
-			, cur_network->&roam_info
+			, &roam_info
 			, GFP_ATOMIC);
 	}
 	else
