@@ -799,14 +799,14 @@ check_bss:
 		struct cfg80211_roam_info roam_info = {};
 
 		wiphy = pwdev->wiphy;		
-		channel = cur_network->network.configuration.ds_config;
+		channel = cur_network->network.Configuration.DSconfig;
 		
 		freq = ieee80211_channel_to_frequency(channel, NL80211_BAND_2GHZ);
 
 		notify_channel = ieee80211_get_channel(wiphy, freq);
 
 		roam_info.channel = notify_channel;
-		roam_info.bssid = cur_network->network.mac_address;
+		roam_info.bssid = cur_network->network.MacAddress;
 		roam_info.req_ie =
 			pmlmepriv->assoc_req+sizeof(struct ieee80211_hdr_3addr)+2;
 		roam_info.req_ie_len =
@@ -6784,13 +6784,14 @@ void rtw_wdev_free(struct wireless_dev *wdev)
 void rtw_wdev_unregister(struct wireless_dev *wdev)
 {
 	struct net_device *ndev;
+	struct mlme_priv * pmlmepriv;
 	_adapter *adapter;
 	struct rtw_wdev_priv *pwdev_priv;
 	
 	adapter = (_adapter *)rtw_netdev_priv(ndev);
 	
 	
-	struct mlme_priv *pmlmepriv = &adapter->mlmepriv;
+	pmlmepriv = &adapter->mlmepriv;
 	struct wlan_network  *cur_network = &(pmlmepriv->cur_network);
 	
 	
@@ -6811,7 +6812,7 @@ void rtw_wdev_unregister(struct wireless_dev *wdev)
 	rtw_cfg80211_indicate_scan_done(adapter, _TRUE);
 
 	#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0))
-	if (!rtw_cfg80211_inform_bss(adapter, cur_network)->config80211_bss) {
+	if (!rtw_cfg80211_inform_bss(adapter, cur_network)) {
 		u8 locally_generated = 1;
 		DBG_871X(FUNC_ADPT_FMT" clear current_bss by cfg80211_disconnected\n", FUNC_ADPT_ARG(adapter));
 		cfg80211_disconnected(adapter->pnetdev, 0, NULL, 0, locally_generated, GFP_ATOMIC);
