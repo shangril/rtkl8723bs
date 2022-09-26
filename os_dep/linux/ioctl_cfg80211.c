@@ -802,7 +802,7 @@ check_bss:
 
 		DBG_871X(FUNC_ADPT_FMT" call cfg80211_roamed\n", FUNC_ADPT_ARG(padapter));
 		cfg80211_roamed(padapter->pnetdev
-			, wiphy->cfg80211_roam_info
+			, cur_network->cfg80211_roam_info
 			, GFP_ATOMIC);
 	}
 	else
@@ -6761,7 +6761,15 @@ void rtw_wdev_unregister(struct wireless_dev *wdev)
 	struct net_device *ndev;
 	_adapter *adapter;
 	struct rtw_wdev_priv *pwdev_priv;
-
+	
+	adapter = (_adapter *)rtw_netdev_priv(ndev);
+	
+	
+	struct mlme_priv *pmlmepriv = &adapter->mlmepriv;
+	struct wlan_network  *cur_network = &(pmlmepriv->cur_network);
+	
+	
+	
 	DBG_8192C("%s(wdev=%p)\n", __func__, wdev);
 
 	if (!wdev)
@@ -6770,13 +6778,15 @@ void rtw_wdev_unregister(struct wireless_dev *wdev)
 	if(!(ndev = wdev_to_ndev(wdev)))
 		return;
 
-	adapter = (_adapter *)rtw_netdev_priv(ndev);
 	pwdev_priv = adapter_wdev_data(adapter);
-
+	
+	
+	
+	
 	rtw_cfg80211_indicate_scan_done(adapter, _TRUE);
 
 	#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0))
-	if (!wdev->config80211_bss) {
+	if (!rtw_cfg80211_inform_bss(adapter, cur_network)->config80211_bss) {
 		u8 locally_generated = 1;
 		DBG_871X(FUNC_ADPT_FMT" clear current_bss by cfg80211_disconnected\n", FUNC_ADPT_ARG(adapter));
 		cfg80211_disconnected(adapter->pnetdev, 0, NULL, 0, locally_generated, GFP_ATOMIC);
