@@ -351,7 +351,7 @@ static u64 rtw_get_systime_us(void)
 	struct timespec * ts;
 	//get_monotonic_boottime(&ts);
 	ktime_get_boottime_ts64(ts);
-	return ((u64)*ts->tv_sec*1000000) + *ts->tv_nsec / 1000;
+	return ((u64)ts->tv_sec*1000000) + ts->tv_nsec / 1000;
 #else
 	struct timeval tv;
 	do_gettimeofday(&tv);
@@ -802,7 +802,7 @@ check_bss:
 
 		DBG_871X(FUNC_ADPT_FMT" call cfg80211_roamed\n", FUNC_ADPT_ARG(padapter));
 		cfg80211_roamed(padapter->pnetdev
-			, cfg80211_roaminfo
+			, cfg80211_roam_info
 			, GFP_ATOMIC);
 	}
 	else
@@ -6776,7 +6776,7 @@ void rtw_wdev_unregister(struct wireless_dev *wdev)
 	rtw_cfg80211_indicate_scan_done(adapter, _TRUE);
 
 	#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0))
-	if (!wdev->config80211_bss) {
+	if (!adapter->config80211_bss) {
 		u8 locally_generated = 1;
 		DBG_871X(FUNC_ADPT_FMT" clear current_bss by cfg80211_disconnected\n", FUNC_ADPT_ARG(adapter));
 		cfg80211_disconnected(adapter->pnetdev, 0, NULL, 0, locally_generated, GFP_ATOMIC);
