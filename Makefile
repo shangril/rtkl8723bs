@@ -19,6 +19,7 @@ EXTRA_CFLAGS += -Wimplicit-fallthrough=0 #necessary for GCC 12.1
 EXTRA_CFLAGS += -Wframe-larger-than=10000 #necessary for GCC 12.1
 EXTRA_CFLAGS += -Wno-discarded-qualifiers #necessary for GCC 12.1
 EXTRA_CFLAGS += -Wno-incompatible-pointer-types #necessary for GCC 12.1
+EXTRA_CFLAGS += -Wno-vla #necessary for GCC 12.1
 
 EXTRA_CFLAGS += -I$(src)/include
 EXTRA_CFLAGS += -I$(src)/hal/phydm
