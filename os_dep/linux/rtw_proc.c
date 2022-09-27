@@ -19,6 +19,7 @@
  ******************************************************************************/
 
 #include <linux/ctype.h>	/* tolower() */
+#include <linux/proc_fs.h>
 #include <drv_types.h>
 #include <hal_data.h>
 #include "rtw_proc.h"
@@ -185,14 +186,14 @@ const int drv_proc_hdls_num = sizeof(drv_proc_hdls) / sizeof(struct rtw_proc_hdl
 static int rtw_drv_proc_open(struct inode *inode, struct file *file)
 {
 	//struct net_device *dev = proc_get_parent_data(inode);
-	ssize_t index = (ssize_t)NODE_DATA(inode);
+	ssize_t index = (ssize_t)NODE_DATA(&inode);
 	const struct rtw_proc_hdl *hdl = drv_proc_hdls+index;
        return single_open(file, hdl->show, NULL);
 }
 
 static ssize_t rtw_drv_proc_write(struct file *file, const char __user *buffer, size_t count, loff_t *pos)
 {
-	ssize_t index = (ssize_t)PDE_DATA(file_inode(file));
+	ssize_t index = (ssize_t)NODE_DATA(file_inode(file));
 	const struct rtw_proc_hdl *hdl = drv_proc_hdls+index;
 	ssize_t (*write)(struct file *, const char __user *, size_t, loff_t *, void *) = hdl->write;
 	
