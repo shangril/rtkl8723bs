@@ -1113,8 +1113,8 @@ void mgt_dispatcher(_adapter *padapter, union recv_frame *precv_frame)
 	struct debug_priv *pdbgpriv = &psdpriv->drv_dbg;
 
 	//RT_TRACE(_module_rtl871x_mlme_c_, _drv_info_,
-		 ("+mgt_dispatcher: type(0x%x) subtype(0x%x)\n",
-		  GetFrameType(pframe), GetFrameSubType(pframe)));
+	//	 ("+mgt_dispatcher: type(0x%x) subtype(0x%x)\n",
+	//	  GetFrameType(pframe), GetFrameSubType(pframe)));
 
 #if 0
 	{
@@ -14584,7 +14584,7 @@ u8 mlme_evt_hdl(_adapter *padapter, unsigned char *pbuf)
 	{
 			
 		//RT_TRACE(_module_rtl871x_cmd_c_,_drv_err_,("\nEvent(%d) Parm Size mismatch (%d vs %d)!\n", 
-			evt_code, wlanevents[evt_code].parmsize, evt_sz));
+		//	evt_code, wlanevents[evt_code].parmsize, evt_sz));
 		goto _abort_event_;	
 			
 	}
