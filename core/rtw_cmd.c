@@ -4620,7 +4620,7 @@ _func_enter_;
 	
 	if(psta==NULL)
 	{
-		RT_TRACE(_module_rtl871x_cmd_c_,_drv_err_,("\nERROR: setassocsta_cmdrsp_callbac => can't get sta_info \n\n"));
+		//RT_TRACE(_module_rtl871x_cmd_c_,_drv_err_,("\nERROR: setassocsta_cmdrsp_callbac => can't get sta_info \n\n"));
 		goto exit;
 	}
 	
