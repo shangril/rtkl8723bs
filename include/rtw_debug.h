@@ -152,8 +152,8 @@ extern void rtl871x_cedbg(const char *fmt, ...);
 #endif
 
 
-#ifdef RT_TRACE()
-#undef RT_TRACE()
+#ifdef RT_TRACE
+#undef RT_TRACE
 //here comes the ugly part. 
 //I'm tired of commenting out every call to this useless macro 
 //everyware in dozens of files
