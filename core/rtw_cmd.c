@@ -4548,7 +4548,7 @@ void rtw_create_ibss_post_hdl(_adapter *padapter, int status)
 		if (pwlan == NULL) {
 			pwlan = rtw_get_oldest_wlan_network(&pmlmepriv->scanned_queue);
 			if (pwlan == NULL) {
-				RT_TRACE(_module_rtl871x_cmd_c_, _drv_err_, ("Error:  can't get pwlan in rtw_joinbss_event_callback\n"));
+				//RT_TRACE(_module_rtl871x_cmd_c_, _drv_err_, ("Error:  can't get pwlan in rtw_joinbss_event_callback\n"));
 				_exit_critical_bh(&(pmlmepriv->scanned_queue.lock), &irqL);
 				goto createbss_cmd_fail;
 			}
@@ -4594,7 +4594,7 @@ _func_enter_;
 
 	if(psta==NULL)
 	{
-		RT_TRACE(_module_rtl871x_cmd_c_,_drv_err_,("\nERROR: rtw_setstaKey_cmdrsp_callback => can't get sta_info \n\n"));
+		//RT_TRACE(_module_rtl871x_cmd_c_,_drv_err_,("\nERROR: rtw_setstaKey_cmdrsp_callback => can't get sta_info \n\n"));
 		goto exit;
 	}
 	
