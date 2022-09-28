@@ -443,7 +443,7 @@ _func_enter_;
 			{
 				//RT_TRACE(_module_rtl871x_ioctl_set_c_, _drv_err_,
 				//	 ("Set SSID is the same ssid, fw_state=0x%08x\n",
-					  get_fwstate(pmlmepriv)));
+				//	  get_fwstate(pmlmepriv)));
 
 				if(rtw_is_same_ibss(padapter, pnetwork) == _FALSE)
 				{				
