@@ -2011,7 +2011,7 @@ static void rtw_joinbss_update_network(_adapter *padapter, struct wlan_network *
 	DBG_871X("%s\n", __FUNCTION__);
 	
 	//RT_TRACE(_module_rtl871x_mlme_c_,_drv_info_,("\nfw_state:%x, BSSID:"MAC_FMT"\n"
-		,get_fwstate(pmlmepriv), MAC_ARG(pnetwork->network.MacAddress)));
+	//	,get_fwstate(pmlmepriv), MAC_ARG(pnetwork->network.MacAddress)));
 
 				
 	// why not use ptarget_wlan??
@@ -2734,7 +2734,7 @@ _func_enter_;
 				_clr_fwstate_(pmlmepriv, WIFI_ADHOC_STATE);
 			}
 
-			if (rtw_create_ibss_cmd(adapter, 0) != _SUCCESS)
+			//if (rtw_create_ibss_cmd(adapter, 0) != _SUCCESS)
 				//RT_TRACE(_module_rtl871x_ioctl_set_c_, _drv_err_, ("***Error=>stadel_event_callback: rtw_create_ibss_cmd status FAIL***\n"));
 
 		}
@@ -3779,8 +3779,8 @@ sint rtw_restruct_sec_ie(_adapter *adapter,u8 *in_ie, u8 *out_ie, uint in_len)
 _func_enter_;
 
 	//RT_TRACE(_module_rtl871x_mlme_c_, _drv_notice_,
-		 ("+rtw_restruct_sec_ie: ndisauthmode=%d ndissecuritytype=%d\n",
-		  ndisauthmode, ndissecuritytype));
+	//	 ("+rtw_restruct_sec_ie: ndisauthmode=%d ndissecuritytype=%d\n",
+	//	  ndisauthmode, ndissecuritytype));
 	
 	//copy fixed ie only
 	_rtw_memcpy(out_ie, in_ie,12);
