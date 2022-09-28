@@ -151,7 +151,24 @@
 extern void rtl871x_cedbg(const char *fmt, ...);
 #endif
 
-//#define RT_TRACE(_Comp, _Level, Fmt) do{}while(0)//This thing is so ugly ! 
+
+#ifdef RT_TRACE
+#undef RT_TRACE
+//here comes the ugly part. 
+//I'm tired of commenting out every call to this useless macro 
+//everyware in dozens of files
+//just to prevent function calls that will pass then things
+//and use CPU
+//so then I uncomment it
+#define RT_TRACE(_Comp, _Level, Fmt) do{}while(0)//This thing is so ugly ! 
+//but I added an ifdef before
+//and an undefined
+//so it will compile on GCC 12.1 without emitting a warning
+#endif
+
+
+
+
 #define _func_enter_ do{}while(0)
 #define _func_exit_ do{}while(0)
 #define RT_PRINT_DATA(_Comp, _Level, _TitleString, _HexData, _HexDataLen) do{}while(0)
