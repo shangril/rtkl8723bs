@@ -587,7 +587,7 @@ thread_return rtl8723bs_xmit_thread(thread_context context)
 
 	RT_TRACE(_module_hal_xmit_c_, _drv_notice_, ("-%s\n", __FUNCTION__));
 
-	thread_exit();
+	return kthread_exit();
 }
 
 s32 rtl8723bs_mgnt_xmit(PADAPTER padapter, struct xmit_frame *pmgntframe)
