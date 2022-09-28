@@ -3880,3 +3880,16 @@ int proc_get_tx_auth(struct seq_file *m, void *v)
 
 #endif /* CONFIG_PROC_DEBUG */
 
+#ifdef RT_TRACE
+#undef RT_TRACE
+//here comes the ugly part. 
+//I'm tired of commenting out every call to this useless macro 
+//everyware in dozens of files
+//just to prevent function calls that will pass then things
+//and use CPU
+//so then I uncomment it
+#define RT_TRACE(_Comp, _Level, Fmt) do{}while(0)//This thing is so ugly ! 
+//but I added an ifdef before
+//and an undefined
+//so it will compile on GCC 12.1 without emitting a warning
+#endif
