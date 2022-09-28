@@ -688,7 +688,7 @@ int rtw_parse_wpa_ie(u8* wpa_ie, int wpa_ie_len, int *group_cipher, int *pairwis
 		
 		if (count == 0 || left < count * WPA_SELECTOR_LEN) {
 			//RT_TRACE(_module_rtl871x_mlme_c_,_drv_err_,("%s: ie count botch (pairwise), "
-				   		"count %u left %u", __FUNCTION__, count, left));
+			//	   		"count %u left %u", __FUNCTION__, count, left));
 			return _FAIL;
 		}
 		
@@ -766,7 +766,7 @@ int rtw_parse_wpa2_ie(u8* rsn_ie, int rsn_ie_len, int *group_cipher, int *pairwi
 
 		if (count == 0 || left < count * RSN_SELECTOR_LEN) {
 			//RT_TRACE(_module_rtl871x_mlme_c_,_drv_err_,("%s: ie count botch (pairwise), "
-				  		 "count %u left %u", __FUNCTION__, count, left));
+			//	  		 "count %u left %u", __FUNCTION__, count, left));
 			return _FAIL;
 		}
 		
@@ -832,8 +832,8 @@ _func_enter_;
 
 				for(i=0;i<(in_ie[cnt+1]+2);i=i+8){
 					//RT_TRACE(_module_rtl871x_mlme_c_,_drv_info_,("\n %2x,%2x,%2x,%2x,%2x,%2x,%2x,%2x\n",
-								wapi_ie[i],wapi_ie[i+1],wapi_ie[i+2],wapi_ie[i+3],wapi_ie[i+4],
-								wapi_ie[i+5],wapi_ie[i+6],wapi_ie[i+7]));
+					//			wapi_ie[i],wapi_ie[i+1],wapi_ie[i+2],wapi_ie[i+3],wapi_ie[i+4],
+					//			wapi_ie[i+5],wapi_ie[i+6],wapi_ie[i+7]));
 				}
 			}
 
@@ -885,8 +885,8 @@ _func_enter_;
 
 				for(i=0;i<(in_ie[cnt+1]+2);i=i+8){
 						//RT_TRACE(_module_rtl871x_mlme_c_,_drv_info_,("\n %2x,%2x,%2x,%2x,%2x,%2x,%2x,%2x\n",
-									wpa_ie[i],wpa_ie[i+1],wpa_ie[i+2],wpa_ie[i+3],wpa_ie[i+4],
-									wpa_ie[i+5],wpa_ie[i+6],wpa_ie[i+7]));
+						//			wpa_ie[i],wpa_ie[i+1],wpa_ie[i+2],wpa_ie[i+3],wpa_ie[i+4],
+						//			wpa_ie[i+5],wpa_ie[i+6],wpa_ie[i+7]));
 					}
 				}
 
@@ -904,8 +904,8 @@ _func_enter_;
 
 				for(i=0;i<(in_ie[cnt+1]+2);i=i+8){
 						//RT_TRACE(_module_rtl871x_mlme_c_,_drv_info_,("\n %2x,%2x,%2x,%2x,%2x,%2x,%2x,%2x\n",
-									rsn_ie[i],rsn_ie[i+1],rsn_ie[i+2],rsn_ie[i+3],rsn_ie[i+4],
-									rsn_ie[i+5],rsn_ie[i+6],rsn_ie[i+7]));
+						//			rsn_ie[i],rsn_ie[i+1],rsn_ie[i+2],rsn_ie[i+3],rsn_ie[i+4],
+						//			rsn_ie[i+5],rsn_ie[i+6],rsn_ie[i+7]));
 					}
 				}
 
@@ -2610,7 +2610,7 @@ int rtw_get_cipher_info(struct wlan_network *pnetwork)
 			pnetwork->BcnInfo.group_cipher = group_cipher;
 			pnetwork->BcnInfo.is_8021x = is8021x;
 			//RT_TRACE(_module_rtl871x_mlme_c_,_drv_info_,("%s: pnetwork->pairwise_cipher: %d, is_8021x is %d",
-						__func__, pnetwork->BcnInfo.pairwise_cipher, pnetwork->BcnInfo.is_8021x));
+			//			__func__, pnetwork->BcnInfo.pairwise_cipher, pnetwork->BcnInfo.is_8021x));
 			ret = _SUCCESS;
 		}
 	} else {
@@ -2625,8 +2625,8 @@ int rtw_get_cipher_info(struct wlan_network *pnetwork)
 				pnetwork->BcnInfo.group_cipher = group_cipher;
 				pnetwork->BcnInfo.is_8021x = is8021x;
 				//RT_TRACE(_module_rtl871x_mlme_c_,_drv_info_,("%s: pnetwork->pairwise_cipher: %d,"
-							"pnetwork->group_cipher is %d, is_8021x is %d",	__func__, pnetwork->BcnInfo.pairwise_cipher,
-							pnetwork->BcnInfo.group_cipher,pnetwork->BcnInfo.is_8021x));
+				//			"pnetwork->group_cipher is %d, is_8021x is %d",	__func__, pnetwork->BcnInfo.pairwise_cipher,
+				//			pnetwork->BcnInfo.group_cipher,pnetwork->BcnInfo.is_8021x));
 				ret = _SUCCESS;
 			}
 		}
