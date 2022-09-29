@@ -154,6 +154,7 @@ extern void rtl871x_cedbg(const char *fmt, ...);
 
 #ifdef RT_TRACE
 #undef RT_TRACE
+#endif
 //here comes the ugly part. 
 //I'm tired of commenting out every call to this useless macro 
 //everyware in dozens of files
@@ -164,7 +165,7 @@ extern void rtl871x_cedbg(const char *fmt, ...);
 //but I added an ifdef before
 //and an undefined
 //so it will compile on GCC 12.1 without emitting a warning
-#endif
+
 
 
 
