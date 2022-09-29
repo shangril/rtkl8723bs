@@ -3882,6 +3882,7 @@ int proc_get_tx_auth(struct seq_file *m, void *v)
 
 #ifdef RT_TRACE
 #undef RT_TRACE
+#endif
 //here comes the ugly part. 
 //I'm tired of commenting out every call to this useless macro 
 //everyware in dozens of files
@@ -3892,4 +3893,3 @@ int proc_get_tx_auth(struct seq_file *m, void *v)
 //but I added an ifdef before
 //and an undefined
 //so it will compile on GCC 12.1 without emitting a warning
-#endif
