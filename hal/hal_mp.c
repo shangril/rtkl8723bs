@@ -1008,7 +1008,7 @@ void mpt_SetRFPath_8723B(PADAPTER pAdapter)
 				}
 
 			}
-			for (i = 0; i < 2; ++i) {
+			for (int i = 0; i < 2; ++i) {
 				u4Byte offset = pRFCalibrateInfo->RxIQC_8723B[ODM_RF_PATH_A][i][0];
 				u4Byte data = pRFCalibrateInfo->RxIQC_8723B[ODM_RF_PATH_A][i][1];
 				
