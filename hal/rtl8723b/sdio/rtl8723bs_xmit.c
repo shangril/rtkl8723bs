@@ -557,6 +557,7 @@ next:
 
 thread_return rtl8723bs_xmit_thread(thread_context context)
 {
+	long kt_result;
 	s32 ret;
 	PADAPTER padapter;
 	struct xmit_priv *pxmitpriv;
@@ -586,8 +587,10 @@ thread_return rtl8723bs_xmit_thread(thread_context context)
 	_rtw_up_sema(&pxmitpriv->SdioXmitTerminateSema);
 
 	RT_TRACE(_module_hal_xmit_c_, _drv_notice_, ("-%s\n", __FUNCTION__));
-
-	return kthread_exit();
+	
+	kthread_exit(kt_result);
+	
+	return kt_result;
 }
 
 s32 rtl8723bs_mgnt_xmit(PADAPTER padapter, struct xmit_frame *pmgntframe)
