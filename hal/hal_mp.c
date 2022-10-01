@@ -998,7 +998,7 @@ void mpt_SetRFPath_8723B(PADAPTER pAdapter)
 				PHY_SetRFReg(pAdapter, ODM_RF_PATH_A, 0x51, bRFRegOffsetMask, 0x6B04E);
 
 
-			for (i = 0; i < 3; ++i) {
+			for (int i = 0; i < 3; ++i) {
 				u4Byte offset = pRFCalibrateInfo->TxIQC_8723B[ODM_RF_PATH_A][i][0];
 				u4Byte data = pRFCalibrateInfo->TxIQC_8723B[ODM_RF_PATH_A][i][1];
 				
