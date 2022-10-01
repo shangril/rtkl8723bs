@@ -1034,7 +1034,7 @@ void mpt_SetRFPath_8723B(PADAPTER pAdapter)
 			else
 				PHY_SetRFReg(pAdapter, ODM_RF_PATH_A, 0x51, bRFRegOffsetMask, 0x6B04E);
 
-			for (i = 0; i < 3; ++i) {
+			for (int i = 0; i < 3; ++i) {
 				/*/ <20130603, Kordan> Because BB suppors only 1T1R, we restore IQC  to S1 instead of S0.*/
 				offset = pRFCalibrateInfo->TxIQC_8723B[ODM_RF_PATH_A][i][0];
 				data = pRFCalibrateInfo->TxIQC_8723B[ODM_RF_PATH_B][i][1];
