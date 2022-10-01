@@ -161,7 +161,7 @@ void hal_mpt_CCKTxPowerAdjust(PADAPTER Adapter, BOOLEAN bInCH14)
 			} else {
 				/* Normal setting for 8703B, just recover to the default setting. */
 				/* This hardcore values reference from the parameter which BB team gave. */
-				for (i = 0 ; i < 2 ; ++i)
+				for (int i = 0 ; i < 2 ; ++i)
 					PHY_SetBBReg(Adapter, pHalData->RegForRecover[i].offset, bMaskDWord, pHalData->RegForRecover[i].value);
 
 				RT_TRACE(_module_mp_, DBG_LOUD, ("MPT_CCKTxPowerAdjust 8703B in Channel %u restore to default setting\n", u1Channel));
@@ -176,7 +176,7 @@ void hal_mpt_CCKTxPowerAdjust(PADAPTER Adapter, BOOLEAN bInCH14)
 		if (!pHalData->bCCKinCH14) {
 			/* Readback the current bb cck swing value and compare with the table to */
 			/* get the current swing index */
-			for (i = 0; i < CCK_TABLE_SIZE; i++) {
+			for (int i = 0; i < CCK_TABLE_SIZE; i++) {
 				if (((CurrCCKSwingVal&0xff) == (u32)CCKSwingTable_Ch1_Ch13[i][0]) &&
 					(((CurrCCKSwingVal&0xff00)>>8) == (u32)CCKSwingTable_Ch1_Ch13[i][1])) {
 					CCKSwingIndex = i;
@@ -1044,7 +1044,7 @@ void mpt_SetRFPath_8723B(PADAPTER pAdapter)
 				}
 			}
 			/*/ <20130603, Kordan> Because BB suppors only 1T1R, we restore IQC to S1 instead of S0.*/
-			for (i = 0; i < 2; ++i) {
+			for (int i = 0; i < 2; ++i) {
 				offset = pRFCalibrateInfo->RxIQC_8723B[ODM_RF_PATH_A][i][0];
 				data = pRFCalibrateInfo->RxIQC_8723B[ODM_RF_PATH_B][i][1];
 				
@@ -1090,7 +1090,7 @@ void mpt_SetRFPath_8703B(PADAPTER pAdapter)
 				PHY_SetBBReg(pAdapter, rS0S1_PathSwitch, BIT9|BIT8|BIT7, 0x0);
 				PHY_SetBBReg(pAdapter, 0xB2C, BIT31, 0x0); /* AGC Table Sel*/
 
-				for (i = 0; i < 3; ++i) {
+				for (int i = 0; i < 3; ++i) {
 					u4Byte offset = pRFCalibrateInfo->TxIQC_8703B[i][0];
 					u4Byte data = pRFCalibrateInfo->TxIQC_8703B[i][1];
 
@@ -1100,7 +1100,7 @@ void mpt_SetRFPath_8703B(PADAPTER pAdapter)
 					}
 
 				}
-				for (i = 0; i < 2; ++i) {
+				for (int i = 0; i < 2; ++i) {
 					u4Byte offset = pRFCalibrateInfo->RxIQC_8703B[i][0];
 					u4Byte data = pRFCalibrateInfo->RxIQC_8703B[i][1];
 
@@ -1117,7 +1117,7 @@ void mpt_SetRFPath_8703B(PADAPTER pAdapter)
 				PHY_SetBBReg(pAdapter, rS0S1_PathSwitch, BIT9|BIT8|BIT7, 0x5);
 				PHY_SetBBReg(pAdapter, 0xB2C, BIT31, 0x1); /* AGC Table Sel */
 
-				for (i = 0; i < 3; ++i) {
+				for (int i = 0; i < 3; ++i) {
 					u4Byte offset = pRFCalibrateInfo->TxIQC_8703B[i][0];
 					u4Byte data = pRFCalibrateInfo->TxIQC_8703B[i][1];
 
@@ -1126,7 +1126,7 @@ void mpt_SetRFPath_8703B(PADAPTER pAdapter)
 						DBG_871X("Switch to S0 TxIQC (offset, data) = (0x%X, 0x%X)\n", offset, data);
 					}
 				}
-				for (i = 0; i < 2; ++i) {
+				for (int i = 0; i < 2; ++i) {
 					u4Byte offset = pRFCalibrateInfo->RxIQC_8703B[i][0];
 					u4Byte data = pRFCalibrateInfo->RxIQC_8703B[i][1];
 
